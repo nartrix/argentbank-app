@@ -4,15 +4,17 @@ import Footer from "./components/footer";
 import Home from "./pages/home";
 import Login from "./pages/login";
 import Profile from "./pages/profile";
+import Error from "./pages/404/error";
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/login" element={<Login />} />
-        <Route exact path="/profile" element={<Profile />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="*" element={<Error />} />
       </Routes>
       <Footer />
     </BrowserRouter>
