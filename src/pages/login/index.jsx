@@ -29,7 +29,6 @@ function Login() {
       dispatch(authActions.updateToken(data.body));
       navigate("/profile");
     } catch (error) {
-      // gerer erreur serveur ou si ya des erreur dans le mail ou password
       console.error("Error:", error);
     }
   };
