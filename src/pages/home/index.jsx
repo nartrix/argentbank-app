@@ -7,7 +7,6 @@ function Home() {
     <main>
       <div className="hero">
         <section className="hero-content">
-          <h2 className="sr-only">Promoted Content</h2>
           <p className="subtitle">No fees.</p>
           <p className="subtitle">No minimum deposit.</p>
           <p className="subtitle">High interest rates.</p>
@@ -15,7 +14,6 @@ function Home() {
         </section>
       </div>
       <section className="features">
-        <h2 className="sr-only">Features</h2>
         <div className="feature-item">
           <img src={ChatImg} alt="Chat Icon" className="feature-icon" />
           <h3 className="feature-item-title">You are our #1 priority</h3>

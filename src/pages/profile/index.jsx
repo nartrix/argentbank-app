@@ -7,7 +7,7 @@ function Profile() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const token = useSelector((state) => state.auth.token); // get token from store or localsotrage
+  const token = useSelector((state) => state.auth.token);
   const firstName = useSelector((state) => state.auth.firstName);
   const lastName = useSelector((state) => state.auth.lastName);
 
@@ -18,7 +18,6 @@ function Profile() {
   const handleCancelClick = () => {
     setIsEditing(false);
   };
-  // fetch user data from API and update store
   useEffect(() => {
     if (!token) {
       navigate("/");
@@ -44,8 +43,6 @@ function Profile() {
         }
         dispatch(authActions.login(data.body));
       } catch (error) {
-        // redirect to login page if token is invalid or expired (or any other error user not found)
-        // and remove token from store
         console.error("Error:", error);
         navigate("/login");
       }
@@ -87,7 +84,7 @@ function Profile() {
   };
 
   return (
-    <main className="main bg-dark">
+    <main className="main bg-dark" style={{ padding: "15px" }}>
       <div className="header">
         <h1>
           Welcome back
@@ -96,13 +93,24 @@ function Profile() {
         </h1>
         {isEditing ? (
           // edit form
-          <form onSubmit={handleSubmit}>
+          <form
+            onSubmit={handleSubmit}
+            style={{ display: "block", justifyContent: "center" }}
+          >
             <input
               type="text"
               defaultValue={firstName}
               name="firstNameInput"
               required
               disabled={!isEditing}
+              style={{
+                border: "2px solid #bfbfbf",
+                color: "#bfbfbf",
+                marginRight: "10px",
+                borderRadius: "5px",
+                padding: "10px",
+                fontSize: "16px",
+              }}
             />
             <input
               type="text"
@@ -110,17 +118,32 @@ function Profile() {
               name="lastNameInput"
               required
               disabled={!isEditing}
+              style={{
+                border: "2px solid #bfbfbf",
+                color: "#bfbfbf",
+                marginRight: "10px",
+                borderRadius: "5px",
+                padding: "10px",
+                fontSize: "16px",
+              }}
             />
-            <button type="submit" className="edit-button">
-              Save
-            </button>
-            <button
-              type="button"
-              className="edit-button"
-              onClick={handleCancelClick}
-            >
-              Cancel
-            </button>
+            <div style={{ marginTop: "20px" }}>
+              <button
+                type="submit"
+                className="edit-button"
+                style={{ marginRight: "20px", width: "100px" }}
+              >
+                Save
+              </button>
+              <button
+                type="button"
+                className="edit-button"
+                onClick={handleCancelClick}
+                style={{ width: "100px" }}
+              >
+                Cancel
+              </button>
+            </div>
           </form>
         ) : (
           // edit button
@@ -133,7 +156,6 @@ function Profile() {
           </button>
         )}
       </div>
-      <h2 className="sr-only">Accounts</h2>
       <section className="account">
         <div className="account-content-wrapper">
           <h3 className="account-title">Argent Bank Checking (x8349)</h3>
