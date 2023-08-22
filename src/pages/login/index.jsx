@@ -30,6 +30,7 @@ function Login() {
       navigate("/profile");
     } catch (error) {
       console.error("Error:", error);
+      window.alert("Email ou mot de passe incorrect", error);
     }
   };
 
